@@ -10,7 +10,9 @@
 <title>jsp start4</title>
 <style type="text/css">
 	table{
-		style="width:70%;margin:auto;border-collapse: collapse;"
+		width:70%;
+		margin:auto;
+		border-collapse: collapse;
 	}
 	td,th{
 		border : 1px solid gray;
@@ -40,7 +42,7 @@
 		</tr>
 		<!-- 아래의 1행 한명의 MyUser 객체 출력을 list 크기만큼 반복해서 테이블에 출력 -->
 		<%
-			for(int i=0; i<list.size();i++){		
+			for(int i=0; i<list.size();i++){		//for(MyUser user : list)
 				MyUser user = list.get(i);
 		%>
 		<tr>	<!-- MyUser 타입 객체의 데이터를 출력 -->
