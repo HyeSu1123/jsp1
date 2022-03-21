@@ -1,4 +1,4 @@
-package test;
+package day1;
 
 //vo, dto 클래스
 public class MyUser {
