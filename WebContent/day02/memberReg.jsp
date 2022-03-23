@@ -22,12 +22,12 @@
 	String name = request.getParameter("name");
 	String password = request.getParameter("password");
 	String email = request.getParameter("email");
-	String number = request.getParameter("age");
+	int age = Integer.parseInt(request.getParameter("age")); //프론트엔드에서 유효성검사를 했다는 조건.
 	String addr = request.getParameter("addr");
 	String gender = request.getParameter("gender");
 	String hobby[] = request.getParameterValues("hobby");
-
-	int age = Integer.parseInt(number);
+	String hobbies = Arrays.toString(request.getParameterValues("hobby"));
+	hobbies = hobbies.substring(1,hobbies.length()-1);
 %>
 <table>
 	<tr>
@@ -52,17 +52,11 @@
 	</tr>
 	<tr>
 		<th>성별</th>
-		<td><%=gender %></td>
+		<td><%=gender.equals("male")? "남성":"여성" %></td>
 	</tr>
 	<tr>
 		<th>취미</th>
-		<td>
-<% 
-	for(int i=0; i<hobby.length;i++){
-		out.print(hobby[i]);
-	}
-%>
-		</td>
+		<td><%=hobbies %></td>
 	</tr>
 </table>
 </body>
