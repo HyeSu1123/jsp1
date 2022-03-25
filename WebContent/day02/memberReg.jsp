@@ -19,6 +19,9 @@
 <body>
 <!-- member.Reg.html에서 입력한 7개의 사용자 입력값을 전달 받아서 table 태그에 출력해보자. -->
 <%
+	//method='post' 방식으로 데이터 전달되었을 때 인코딩 꼭 하기.
+	request.setCharacterEncoding("UTF-8");
+	
 	String name = request.getParameter("name");
 	String password = request.getParameter("password");
 	String email = request.getParameter("email");
