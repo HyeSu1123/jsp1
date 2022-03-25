@@ -25,7 +25,7 @@ public class HrdSaleDao {
 				"	(SELECT custno, sum(price) AS asum FROM MONEY_TBL_02 mt " + 
 				"	GROUP BY CUSTNO" + 
 				"	ORDER BY asum desc) sale" + 
-				"	WHERE mt.CUSTNO = sale.custno order by custno";
+				"	WHERE mt.CUSTNO = sale.custno order by asum desc";
 		PreparedStatement pstmt = null;
 		ResultSet rs= null;		
 		List<SaleSum> sales = new ArrayList<>();

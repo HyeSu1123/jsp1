@@ -67,6 +67,8 @@
 	  <h4 style="text-align: center;">홈쇼핑 회원 수정</h4>
         <form action="6_updateSave.jsp" method="post">  
        <input type="hidden" name="num" value="<%= member.getCustNo() %>" >
+       <!-- hidden 추가 대신 사용할 다른 방법은 회원 번호 input의 readonly="readonly"속성으로 한다.
+       		입력 불가를 표현하기 위한 css가 필요하다. -->
             <table style="width:70%;margin:auto;">
                 <tr>
                     <td class="col1_title">회원번호</td>

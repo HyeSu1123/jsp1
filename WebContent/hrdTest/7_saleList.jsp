@@ -35,7 +35,7 @@
 %>
         <section>
         <h4 style="text-align: center;">홈쇼핑 회원 목록조회</h4>
-            <table style="width:70%;margin:auto;">
+            <table style="width:70%;margin:auto;text-align: center;">
 				<tr>
 					<th>회원 번호</th>
 					<th>회원 성명</th>
