@@ -53,7 +53,21 @@
 						<td><%=list.get(i).getPhone() %></td>
 						<td><%=list.get(i).getAdderss() %></td>
 						<td><%=list.get(i).getJoinDate() %></td>
-						<td style="text-align: center;"><%=list.get(i).getGrade() %></td>
+						<td style="text-align: center;">
+						<%
+						String temp = list.get(i).getGrade();
+						switch(temp){
+						case"A":
+							out.print("VIP");
+							break;
+						case"B":
+							out.print("일반");
+							break;
+						case"C":
+							out.print("직원");
+							break;
+						}
+						%></td>
 						<td style="text-align: center;"><%=list.get(i).getCity() %></td>
 					</tr>
 					<% 
