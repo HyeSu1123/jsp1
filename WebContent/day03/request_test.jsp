@@ -18,6 +18,11 @@
 			   						이때 form data 인코딩은 직접 설정이 필요하다.
 			   						URL에 사용자 입력값 없다
 			   						day2의 member.Reg.html의 method는 'post'로 한다.
+			   						
+	get과 post 방식의 주요한 차이는 
+			- 보낼수 있는 데이터의 크기 제한이 다릅니다. get은 글자수 2000자 정도(브라우저 마다 다름)
+			  post는 2MB 정도  
+			- get으로 보낸 요청은 캐쉬 됩니다.
 	-->
 	<%
 		request.setCharacterEncoding("UTF-8"); //method='post'에서는 꼭 필요.
