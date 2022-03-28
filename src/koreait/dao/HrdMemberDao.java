@@ -154,4 +154,110 @@ public class HrdMemberDao {
 
 		return list;
 	}
+	
+	//이름을 입력하고 전달받아 검색
+	public List<HrdMember> searchName(String name){
+		Connection conn = OracleConnectUtil.connect();
+		ResultSet rs = null;
+		PreparedStatement pstmt =null;
+		String sql="SELECT * FROM MEMBER_TBL_02 mt WHERE CUSTNAME =?";
+		List<HrdMember> list = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				list.add(new HrdMember(rs.getInt(1),
+						rs.getString(2),
+						rs.getString(3),
+						rs.getString(4),
+						rs.getDate(5),
+						rs.getString(6),
+						rs.getString(7)));
+			}
+		} catch (SQLException e) {
+			System.out.println("HrdMemberDao selectAll 오류"+ e.getMessage());
+		}
+		OracleConnectUtil.close(conn);
+
+		return list;
+	}
+	//이름을 입력하고 전달받아 검색
+	public List<HrdMember> searchName2(String name){
+		Connection conn = OracleConnectUtil.connect();
+		ResultSet rs = null;
+		PreparedStatement pstmt =null;
+		String sql="SELECT * FROM MEMBER_TBL_02 mt WHERE CUSTNAME LIKE '%'||?||'%'";
+		List<HrdMember> list = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				list.add(new HrdMember(rs.getInt(1),
+						rs.getString(2),
+						rs.getString(3),
+						rs.getString(4),
+						rs.getDate(5),
+						rs.getString(6),
+						rs.getString(7)));
+			}
+		} catch (SQLException e) {
+			System.out.println("HrdMemberDao selectAll 오류"+ e.getMessage());
+		}
+		OracleConnectUtil.close(conn);
+		
+		return list;
+	}
+	
+	//검색
+	public List<HrdMember> search(String col,String find){
+		Connection conn = OracleConnectUtil.connect();
+		ResultSet rs = null;
+		PreparedStatement pstmt =null;
+		String sql="SELECT * FROM MEMBER_TBL_02 mt";
+		List<HrdMember> list = new ArrayList<>();
+		
+		switch(col) {
+		case "a":
+			sql +=" WHERE CUSTNAME LIKE '%'||?||'%'";
+			break;
+		case "b":
+			sql +=" WHERE ADDRESS LIKE '%'||?||'%'";
+			break;
+		case "c":
+			sql +=" WHERE GRADE LIKE '%'||?||'%'";
+			break;
+		case "d":
+			sql +=" WHERE CITY LIKE '%'||?||'%'";
+			break;
+		}
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, find);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				list.add(new HrdMember(rs.getInt(1),
+						rs.getString(2),
+						rs.getString(3),
+						rs.getString(4),
+						rs.getDate(5),
+						rs.getString(6),
+						rs.getString(7)));
+			}
+		} catch (SQLException e) {
+			System.out.println("HrdMemberDao selectAll 오류"+ e.getMessage());
+		}
+		OracleConnectUtil.close(conn);
+		
+		return list;
+	}
 }
